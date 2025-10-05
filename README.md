@@ -1,88 +1,93 @@
-# Sistema CRUD de Funcionários
+# 🚀 Sistema CRUD de Funcionários  
 
-> README completo para o sistema PHP de gerenciamento de funcionários (CRUD).
-
----
-
-## Sumário
-
-- [Visão geral](#visão-geral)
-- [Funcionalidades](#funcionalidades)
-- [Tecnologias](#tecnologias)
-- [Requisitos](#requisitos)
-- [Estrutura do projeto](#estrutura-do-projeto)
-- [Banco de dados](#banco-de-dados)
-  - [Modelo da tabela `funcionarios`](#modelo-da-tabela-funcionarios)
-  - [Comandos úteis (MySQL)](#comandos-úteis-mysql)
-- [Instalação e configuração](#instalação-e-configuração)
-- [Como usar](#como-usar)
-- [Segurança e boas práticas](#segurança-e-boas-práticas)
-- [Debug / Troubleshooting](#debug--troubleshooting)
-- [Extras / Customizações comuns](#extras--customizações-comuns)
-- [Contribuição](#contribuição)
-- [Licença](#licença)
+Um sistema web completo para **gerenciamento de funcionários**, desenvolvido em **PHP + MySQL**, com interface responsiva e código limpo.  
+Ideal para estudos, portfólios ou uso em pequenas empresas.  
 
 ---
 
-## Visão geral
+## 📸 Preview
 
-Este projeto é um sistema CRUD (Create, Read, Update, Delete) simples para gerenciamento de funcionários, escrito em PHP com front-end usando HTML/CSS/Bootstrap. Serve como base para sistemas administrativos pequenos (intranet, controle de RH básico, etc.).
+<img src="image01.png" width="50" height="50">
+## 
+<img src="image02.png" width="50" height="50">
 
-> Observação: o README assume que o projeto usa um arquivo de configuração `config/db.php` responsável pela conexão com o banco de dados.
 
----
+## 🧩 Sumário
 
-## Funcionalidades
-
-- Listagem de funcionários.
-- Inserção (criação) de novos funcionários.
-- Edição de registros existentes.
-- Exclusão de funcionários.
-- Upload / integração com imagens (se implementado no projeto).
-- Validações básicas no front-end (HTML/JS) e no back-end (PHP).
-
----
-
-## Tecnologias
-
-- PHP (7.x / 8.x - compatível)
-- MySQL / MariaDB
-- HTML, CSS, JavaScript
-- Bootstrap
+- [📘 Visão Geral](#-visão-geral)
+- [⚙️ Funcionalidades](#️-funcionalidades)
+- [🛠️ Tecnologias Utilizadas](#️-tecnologias-utilizadas)
+- [📂 Estrutura do Projeto](#-estrutura-do-projeto)
+- [🧱 Banco de Dados](#-banco-de-dados)
+- [🚀 Instalação e Configuração](#-instalação-e-configuração)
+- [💻 Como Usar](#-como-usar)
+- [🔒 Segurança e Boas Práticas](#-segurança-e-boas-práticas)
+- [🤝 Contribuição](#-contribuição)
+- [📜 Licença](#-licença)
+- [👨‍💻 Autor](#-autor)
 
 ---
 
-## Requisitos
+## 📘 Visão Geral
 
-- Servidor web com PHP (Apache, Nginx, XAMPP, WAMP, etc.)
-- MySQL ou MariaDB
-- Extensões PHP `mysqli` ou `pdo_mysql`
+Este projeto implementa um **CRUD (Create, Read, Update, Delete)** de funcionários, com recursos de cadastro, listagem, edição e exclusão de registros.  
+O sistema é leve, simples de configurar e serve como base para aplicações administrativas.
 
 ---
 
-## Estrutura do projeto
+## ⚙️ Funcionalidades
+
+✅ Cadastro de novos funcionários  
+✅ Edição de dados existentes  
+✅ Exclusão de registros  
+✅ Filtro por nome e data  
+✅ Exibição de dados em tabela dinâmica  
+✅ Campos com validação de formulário  
+✅ Responsividade total (Bootstrap)  
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+| Tecnologia | Descrição |
+|-------------|------------|
+| **PHP 8+** | Lógica de back-end e integração com o banco |
+| **MySQL** | Armazenamento dos dados |
+| **HTML5 / CSS3 / JS** | Estrutura e interatividade |
+| **Bootstrap 5** | Design responsivo e moderno |
+| **Font Awesome** | Ícones para interface |
+
+---
+
+## 📂 Estrutura do Projeto
 
 ```
-crud_funcionarios/
-├─ config/
-│  └─ db.php
-├─ public/
-│  ├─ index.php
-│  ├─ novo.php
-│  ├─ editar.php
-│  └─ styles.css
-├─ src/
-│  └─ exec01Mod01.php
-├─ assets/
-│  └─ img/
-└─ README.md
+CRUD_FUNCIONÁRIOS/
+│
+├── config/
+│   └── db.php                     # Arquivo de conexão com o banco de dados
+│
+├── img/                           # Imagens usadas no sistema
+│   └── (suas imagens aqui)
+│
+├── pages/
+│   ├── delete.php                 # Exclusão de funcionário
+│   ├── edit.php                   # Edição de funcionário
+│   ├── logout.php                 # Logout do usuário
+│   └── register.php               # Cadastro de novo funcionário
+│
+├── dashboard.php                  # Painel principal do sistema (listagem CRUD)
+├── index.php                      # Tela inicial / Login do sistema
+│
+└── README.md                      # Documentação do projeto
+
 ```
 
 ---
 
-## Banco de dados
+## 🧱 Banco de Dados
 
-### Modelo da tabela `funcionarios`
+### 📄 Estrutura da Tabela `funcionarios`
 
 ```sql
 CREATE TABLE funcionarios (
@@ -93,72 +98,106 @@ CREATE TABLE funcionarios (
   telefone VARCHAR(15),
   cargo VARCHAR(20),
   data_contratacao DATE,
-  role ENUM('admin','gerente','usuario') NOT NULL DEFAULT 'usuario',
+  role ENUM('administrador','usuario') NOT NULL DEFAULT 'usuario',
   senha VARCHAR(100) NOT NULL
 );
 ```
 
-### Comandos úteis (MySQL)
-
-```sql
-ALTER TABLE funcionarios
-  ADD COLUMN role ENUM('admin','gerente','usuario') NOT NULL DEFAULT 'usuario',
-  ADD COLUMN senha VARCHAR(100) NOT NULL;
-```
+💡 **Dica:** use `password_hash()` para armazenar senhas com segurança.
 
 ---
 
-## Instalação e configuração
+## 🚀 Instalação e Configuração
 
-1. Extraia o projeto (`crud_funcionários.rar`) na pasta pública do servidor.
-2. Crie o banco e importe o schema.
-3. Configure `config/db.php`:
+### 1️⃣ Clone o repositório
+
+```bash
+git clone https://github.com/seuusuario/crud-funcionarios.git
+cd crud-funcionarios
+```
+
+### 2️⃣ Configure o banco de dados
+
+Crie um banco no MySQL:
+```sql
+CREATE DATABASE sistema_funcionarios;
+USE sistema_funcionarios;
+```
+
+Importe o script SQL fornecido no projeto.
+
+### 3️⃣ Configure a conexão (`config/db.php`)
 
 ```php
 <?php
 $servername = "localhost";
-$username = "appuser";
-$password = "sua_senha";
-$dbname   = "sistema_funcionarios";
+$username = "root";
+$password = ""; //sua senha
+$dbname = ""; // seu banco
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
-    die("Conexão falhou: " . $conn->connect_error);
+    die("Falha na conexão: " . $conn->connect_error);
 }
-$conn->set_charset('utf8mb4');
+$conn->set_charset("utf8mb4");
 ?>
 ```
 
-4. Acesse `http://localhost/crud_funcionarios/`.
+### 4️⃣ Execute o servidor local
+
+```bash
+php -S localhost:8000 -t public
+```
+
+Acesse: 👉 **http://localhost:8000**
 
 ---
 
-## Segurança e boas práticas
+## 💻 Como Usar
 
-- Use `password_hash()` e `password_verify()` para senhas.
-- Use *prepared statements* para evitar SQL Injection.
-- Use `htmlspecialchars()` para evitar XSS.
-- Adicione tokens CSRF em formulários.
-- Restringir acesso por `role` (admin/gerente/usuario).
-
----
-
-## Contribuição
-
-1. Fork o repositório.
-2. Crie uma branch: `git checkout -b feature/minha-feature`.
-3. Commit suas mudanças: `git commit -m "Adiciona minha feature"`.
-4. Push: `git push origin feature/minha-feature`.
-5. Abra um Pull Request.
+1. Clique em **“Adicionar Funcionário”**.  
+2. Preencha os campos obrigatórios.  
+3. Edite ou exclua registros diretamente na tabela.  
+4. Use o campo de busca para filtrar nomes.  
 
 ---
 
-## Licença
+## 🔒 Segurança e Boas Práticas
 
-Licenciado sob a **MIT License**.
+🔐 Utilize `prepared statements` para evitar SQL Injection.  
+🧱 Escape de saída com `htmlspecialchars()`.  
+🔑 Hash de senha com `password_hash()` e `password_verify()`.  
+🚫 Valide dados no servidor e no cliente.  
+🧭 Restrinja permissões com o campo `role` (admin, gerente, usuário).  
 
 ---
 
-## Autor
+## 🤝 Contribuição
 
-Desenvolvido por **Felipe Silva Costa**.
+Quer contribuir? Siga estes passos 👇
+
+1. Faça um **fork** do repositório  
+2. Crie uma nova **branch** (`git checkout -b feature/minha-feature`)  
+3. Faça o **commit** (`git commit -m "Adiciona nova feature"`)  
+4. Faça o **push** (`git push origin feature/minha-feature`)  
+5. Abra um **Pull Request**  
+
+---
+
+## 📜 Licença
+
+Este projeto é licenciado sob a **MIT License** — sinta-se livre para usar, modificar e distribuir.  
+Consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+---
+
+## 👨‍💻 Autor
+
+Desenvolvido com 💙 por **Felipe Silva Costa**  
+📧 [seuemail@exemplo.com]  
+🌐 [https://github.com/seuusuario](https://github.com/seuusuario)
+
+---
+
+> *"Código limpo é aquele que você tem orgulho de mostrar."* 💡
+
