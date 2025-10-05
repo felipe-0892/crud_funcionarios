@@ -7,9 +7,9 @@ Ideal para estudos, portfólios ou uso em pequenas empresas.
 
 ## 📸 Preview
 
-<img src="image01.png" width="50" height="50">
-## 
-<img src="image02.png" width="50" height="50">
+<img src="image01.png">
+
+<img src="image02.png">
 
 
 ## 🧩 Sumário
